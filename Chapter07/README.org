@@ -30,6 +30,88 @@ M-x help-with-tutorial-spec-language
 ;; 使用英文版
 M-x help-with-tutorial (C-h t)
 #+END_SRC
+*** 基础按键
+| HotKey    | Effect                     |
+|-----------+----------------------------|
+| C-x C-c   | 退出 Emacs                 |
+| C-g       | 中断正在输入的命令         |
+| C-x k     | 杀死缓冲区                 |
+| C-v       | 滚动到下一屏               |
+| M-v       | 滚动到上一屏               |
+| C-l       | 清屏重绘，光标移到屏幕中间 |
+| C-p       | 上                         |
+| C-n       | 下                         |
+| C-b       | 左                         |
+| C-f       | 右                         |
+| M-f       | 光标向前移动一个词单位     |
+| M-b       | 光标向后移动一个词单位     |
+| C-a       | 移到行首                   |
+| C-e       | 移到行尾                   |
+| M-a       | 移到句首                   |
+| M-e       | 移到句尾                   |
+| M-<       | 移到文本首                 |
+| M->       | 移到文本尾                 |
+| C-u       | 重复计数                   |
+| C-u 8 C-f | 向右移动 8 个字符          |
+| C-x 1     | 仅保留当前子窗口           |
+| C-x 2     | 垂直切分窗口               |
+| C-x 3     | 水平切分窗口               |
+| <DEL>     | 删除光标前的字符           |
+| C-d       | 删除光标后的字符           |
+| M-<DEL>   | 删除光标前的词             |
+| M-d       | 删除光标后的词             |
+| C-k       | 删除当前光标到行尾的字符   |
+| M-k       | 删除当前光标到句尾的字符   |
+| C-u 8 *   | 输入 ********              |
+| C-<SPC>   | 标记                       |
+| C-@       | 标记                       |
+| C-w       | 剪切                       |
+| C-y       | 粘贴                       |
+| C-/       | 撤消                       |
+| C-_       | 撤消                       |
+| C-x u     | 撤消                       |
+| C-x C-f   | 查找文件                   |
+| C-x C-s   | 保存文件                   |
+| C-x C-b   | 列出缓冲区                 |
+| C-x b     | 切换缓冲区                 |
+| C-x s     | 保存一些缓冲区             |
+| C-x C-z   | 挂起 Emacs                 |
+| C-h m     | 看当前 Major mode 的文档   |
+| C-x o     | 跳到下一个子窗口，循环     |
+| C-h a     | 查找命令                   |
+| C-h ?     | 帮助                       |
+| C-h k     | 查找快捷键的功能说明       |
+| C-h f     | 描述函数的功能             |
+| C-h v     | 描述变量的作用             |
+| C-h t     | 打开入门教程               |
+| C-h i     | 打开手册                   |
+
+** Emacs 的自由开放使其拥有一些独特的功能
+*** 在 VSCode 中，一个项目只能有一个布局
+*** 在 Emacs 中，一个项目可以有任意多个布局
+#+BEGIN_SRC lisp
+;; 创建布局
+wg-create-workgroup (SPC s s)
+;; 打开布局
+wg-open-workgroup (SPC l l)
+;; 保存的位置
+~/.emacs_workgroups
+#+END_SRC
+** 如何测量并优化工作流
+*** keyfreq 插件
+#+BEGIN_SRC lisp
+;; 查看按键使用频率
+M-x keyfreq-show
+#+END_SRC
+*** repeat
+    - 在 Emacs 启用 Evil 模式后，可以使用 . 来重复上一次操作。
+    - 替换数量少，又需要一步步确认可以使用这种方法。
+*** TODO 更高效的全局搜索替换
+#+BEGIN_SRC lisp
+M-x mark-whole-buffer (, x h) (C-x h)
+#+END_SRC
+    - 配合 Git 取消不需要的替换
+    - 大而复杂的项目，推荐使用这种方法
 
 * 快捷键
 ** 默认 Vi 模式
