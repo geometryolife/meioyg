@@ -112,7 +112,6 @@ M-x mark-whole-buffer (, x h) (C-x h)
 #+END_SRC
     - 配合 Git 取消不需要的替换
     - 大而复杂的项目，推荐使用这种方法
-
 ** 文本编辑的核武器
 *** TODO 在多文件中查找替换
 #+BEGIN_SRC lisp
@@ -130,7 +129,26 @@ C-c C-d
 ;; 结束编辑
 C-c C-c
 #+END_SRC
-
+** 少有人知道的打开文件的技巧
+*** 技巧
+#+BEGIN_SRC lisp
+M-x find-file-in-project-by-selected (, k k)
+;; 输入
+p1
+proj1
+;; 使用正则表达式
+p[1-2]
+;; 反向过滤
+!p2
+;; 在某个文件中有某个文件的路径，可以跳转，同 Vim 的 gf
+M-x find-file-in-project-at-point (, j j)
+;; 在当前文件的目录中查找文件
+M-x find-file-in-current-directory (, t t)
+;; 这个命令支持前缀参数，在当前文件目录的上一层目录查找
+C-u 1 , t t
+;; 简化
+1 , t t
+#+END_SRC
 * 快捷键
 ** 默认 Vi 模式
 ** ,rr 打开最近文件
