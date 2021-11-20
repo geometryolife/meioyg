@@ -113,6 +113,24 @@ M-x mark-whole-buffer (, x h) (C-x h)
     - 配合 Git 取消不需要的替换
     - 大而复杂的项目，推荐使用这种方法
 
+** 文本编辑的核武器
+*** TODO 在多文件中查找替换
+#+BEGIN_SRC lisp
+;; 选中
+;; 查找替换，此时可以选择指定文件或排除指定文件
+M-x my-multi-purpose-grep (, q q)
+;; 反向过滤，如
+!code.js
+;; 进入 ivy-occur
+C-x C-o
+;; 让 Buffer 可以编辑 (wgrep-exit)
+C-x C-q
+;; 若想删除某行，可以标记删除
+C-c C-d
+;; 结束编辑
+C-c C-c
+#+END_SRC
+
 * 快捷键
 ** 默认 Vi 模式
 ** ,rr 打开最近文件
