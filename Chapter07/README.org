@@ -149,6 +149,16 @@ C-u 1 , t t
 ;; 简化
 1 , t t
 #+END_SRC
+** 操作子窗口最理想的技巧
+#+BEGIN_SRC lisp
+;; 借助 winum 插件实现
+;; 方法1
+M-number
+;; 方法2
+,-number
+;; 借助 ace-window 插件实现
+C-x o number
+#+END_SRC
 * 快捷键
 ** 默认 Vi 模式
 ** ,rr 打开最近文件
