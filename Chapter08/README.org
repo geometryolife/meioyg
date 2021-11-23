@@ -1,0 +1,17 @@
+* 打造自由智能的开发环境
+** 使用脚本和开源自由的命令行工具强化开发环境
+*** Lisp
+    - 历史悠久
+    - 早期，Lisp 是用于开发人工智能的语言
+*** TODO 三个重要的功能
+    - 代码导航
+    - 代码自动完成
+    - 在项目中找文件
+#+BEGIN_SRC lisp
+;; 文件跳转
+M-x find-file-in-project-at-point (, j j)
+
+Find Tag
+imenu items
+#+END_SRC
+** 理解环境变量
