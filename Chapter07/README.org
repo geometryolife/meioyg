@@ -106,14 +106,19 @@ M-x keyfreq-show
 *** repeat
     - 在 Emacs 启用 Evil 模式后，可以使用 . 来重复上一次操作。
     - 替换数量少，又需要一步步确认可以使用这种方法。
-*** TODO 更高效的全局搜索替换
+*** 修改某个函数内的所有变量名
 #+BEGIN_SRC lisp
-M-x mark-whole-buffer (, x h) (C-x h)
+;; 选中需要修改的字符
+M-x my-rename-thing-at-point (, r v)
+#+END_SRC
+*** 更高效的全局搜索替换
+#+BEGIN_SRC lisp
+M-x evilmr-replace-in-buffer (, r b)
 #+END_SRC
     - 配合 Git 取消不需要的替换
     - 大而复杂的项目，推荐使用这种方法
 ** 文本编辑的核武器
-*** TODO 在多文件中查找替换
+*** 在多文件中查找替换
 #+BEGIN_SRC lisp
 ;; 选中
 ;; 查找替换，此时可以选择指定文件或排除指定文件
@@ -121,13 +126,19 @@ M-x my-multi-purpose-grep (, q q)
 ;; 反向过滤，如
 !code.js
 ;; 进入 ivy-occur
-C-x C-o
+C-c C-o
 ;; 让 Buffer 可以编辑 (wgrep-exit)
 C-x C-q
+;; 使用正则表达式来替换
+:'<,'>s/\<\(var1\)\>/var2/g
+;; 绑定的快捷键，将光标放到要替换的字符上
+evilmr-replace-in-buffer (, r b)
 ;; 若想删除某行，可以标记删除
 C-c C-d
 ;; 结束编辑
-C-c C-c
+C-c C-c 或 C-x C-s
+;; 取消编辑
+C-c C-k
 #+END_SRC
 ** 少有人知道的打开文件的技巧
 *** 技巧
