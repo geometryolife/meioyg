@@ -82,6 +82,45 @@ M-x erase-buffer
   (insert "This is a new line\n"))
 #+END_SRC
 ** Emacs Lisp 基础: 运算符
+*** 查看函数的技巧
+#+BEGIN_SRC lisp
+;; 在要查找的函数前加一个空格可以匹配相关的函数
+C-h f <Space>FUNCTION
+#+END_SRC
+*** 算术运算和一些函数
+#+BEGIN_SRC lisp
+;; 算术运算
+(defun my-sum (v1 v2 v3)
+  ;; v1 + v2 + v3
+  (+ v1 v2 v3))
+
+(defun my-minus (v1 v2 v3)
+  (- v1 v2 v3))
+
+(defun my-multi (v1 v2 v3)
+  (* v1 v2 v3))
+
+(defun my-div (v1 v2 v3)
+  (/ v1 v2 v3))
+
+;; 字符串拼接
+(defun my-str-op (v1)
+  (concat v1 "good" "day" "! haha"))
+
+;; 取字符串的第一个字符
+(defun my-substr (v1)
+  ;; (sbustring STRING FROM TO)
+  (substring v1 0 1))
+
+;; 比较两个字符串是否相等
+;; t or nil
+(defun my-estr (v1 v2)
+  (string-equal v1 v2))
+
+;; 去掉词左右两边的空白
+(defun my-tstr (v1)
+  (string-trim v1))
+#+END_SRC
 ** Emacs Lisp 基础: 数据结构
 ** Emacs Lisp 基础: 正则表达式
 ** Emacs Lisp 基础: 语句(statement)
