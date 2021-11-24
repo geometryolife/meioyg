@@ -15,3 +15,74 @@ Find Tag
 imenu items
 #+END_SRC
 ** 理解环境变量
+*** Windows 设置环境变量
+#+BEGIN_SRC shell
+# 查看环境变量
+echo %PATH%
+echo %HOME%
+d:\cygwin64\home\Administrator
+# 在 Windows 中才用设置 HOME 环境变量，Linux 和 Mac 默认设置好了
+# PATH 环境变量设置方法，建议通过面板永久设置
+set PATH=%PATH%;D:\Temp
+#+END_SRC
+*** Linux/Mac 设置环境变量
+#+BEGIN_SRC shell
+# 查看环境变量
+echo $PATH
+# 设置环境变量，可写进配置文件永久生效
+export PATH=$PATH:/home/joe/temp
+#+END_SRC
+** 在 Windows 上安装 Cygwin
+** 在 MacOS 上安装 Homebrew
+** 在 Linux 上使用 Apt 安装第三方软件
+#+BEGIN_SRC shell
+git --version
+sudo apt autoremove git
+sudo apt install git
+#+END_SRC
+** Emacs Lisp 基础: 变量
+*** 评估表达式
+#+BEGIN_SRC lisp
+M-x eval-expression (, e e)
+M-x eval-buffer (, e b)
+M-x erase-buffer
+
+;; 拼接两个字符串
+(concat "ab" "cd")
+;; 设置变量
+(setq a 5)
+(setq b "abc")
+(setq c "eeeee")
+#+END_SRC
+
+** Emacs Lisp 基础: 函数
+*** 函数定义
+    - 交互式命令
+    - 插入函数
+#+BEGIN_SRC lisp
+;; define function
+(defun hello1 (v1)
+  ;; print message
+  (message "Hello World")
+  (+ v1 3))
+
+;; formatted print
+(defun hello2 (v2 v3 v4)
+  (message "v2=%s v3=%s v4=%s" v2 v3 v4)
+  (message "v2=%s" v2))
+
+;; function => interactive command
+(defun bye ()
+  (interactive)
+  (message "bye world"))
+
+;; insert a new line
+(defun pnl ()
+  (interactive)
+  (insert "This is a new line\n"))
+#+END_SRC
+** Emacs Lisp 基础: 运算符
+** Emacs Lisp 基础: 数据结构
+** Emacs Lisp 基础: 正则表达式
+** Emacs Lisp 基础: 语句(statement)
+** Emacs Lisp 基础: 与命令行交互
