@@ -177,4 +177,120 @@ C-h f <Space>FUNCTION
   (message "num=%s" (match-string 1 str)))
 #+END_SRC
 ** Emacs Lisp 基础: 语句(statement)
+*** 条件判断
+    - if
+    - when
+    - unless
+    - cond
+#+BEGIN_SRC lisp
+(setq my-cond nil)
+;; if 语句
+;; if 只能执行一句，else 可以执行多句
+(if my-cond (message "hello")
+  (message "bye")
+  (message "bye bye")
+  (message "bye bye bye"))
+
+;; when 语句
+;; 当条件为真时执行，当条件为假时不执行
+(when my-cond
+  (message "hello")
+  (message "bye"))
+
+;; unless 语句
+;; 等价于 when not
+;; (when (not my-cond)
+;;   (message "hello")
+;;   (message "bye"))
+(unless my-cond
+  (message "hello")
+  (message "bye")
+  )
+
+;; cond 语句
+(setq my-cond1 nil)
+(setq my-cond2 nil)
+(setq my-cond3 nil)
+(cond
+ (my-cond1
+  (message "1" ))
+ (my-cond2
+  (message "2" ))
+ (my-cond3
+  (message "3"))
+ (t
+  (message "default")))
+#+END_SRC
+*** 循环语句
+    - while
+    - dolist
+    - and
+    - or
+#+BEGIN_SRC lisp
+;; while 语句
+(setq i 0)
+(while (< i 10)
+  (message "i=%s" i)
+  (message "Hello")
+  (setq i (+ 1 i)))
+
+(setq i 0)
+(while (and nil (< i 10))
+  (message "i=%s" i)
+  (setq i (+ 1 i)))
+
+;; and
+(message "rlt=%s" (and t 3))
+
+;; or
+(message "rlt=%s" (or nil 4))
+
+;; 嵌套
+(message "rlt=%s" (or (and t 3) 4))
+
+;; 把列表中的每个元素挨个取出
+(setq my-list '(1 2 "a" "b"))
+(dolist (elem my-list)
+  (message "elem=%s" elem))
+#+END_SRC
+*** 给变量赋初值
+    - let*
+    - mapcar
+#+BEGIN_SRC lisp
+;; let*
+(let* ((a 3)
+       ;; 新的语法在给 a 赋值后可以直接使用
+       (b (+ a 3)))
+  (message "a=%s" a)
+  (message "b=%s" b))
+
+;; 旧的语法
+(let ((a 3))
+  (message "a=%s" a))
+
+;; mapcar
+;; 返回一个和原来列表长度相等的新列表
+(setq my-list '(1 2 "a" "b"))
+(defun say-hi (elem)
+  (message "Hi, elem=%s" elem)
+  (format "str=%s" elem))
+(message "mapcar=%s" (mapcar 'say-hi my-list))
+
+;; identity
+(message "mapcar=%s" (mapcar 'identity my-list))
+
+;; 匿名函数
+(message "mapcar=%s" (mapcar
+                      (lambda (a)
+                        (format "format=%s" a))
+                      my-list))
+#+END_SRC
 ** Emacs Lisp 基础: 与命令行交互
+#+BEGIN_SRC elisp
+(setq a (shell-command-to-string "echo hello"))
+(message "a=%s" a)
+
+;; 非常有用
+(setq b (shell-command-to-string "find ~/prog/meioyg/ -name '*.*'"))
+(insert b)
+#+END_SRC
