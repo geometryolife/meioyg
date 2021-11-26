@@ -122,6 +122,59 @@ C-h f <Space>FUNCTION
   (string-trim v1))
 #+END_SRC
 ** Emacs Lisp 基础: 数据结构
+*** 列表
+#+BEGIN_SRC lisp
+;; 创建一个列表
+;; list a => b => c => e => list-end
+;; (setq my-list (list a b c))
+(setq my-list (list "a" "b" 1 2))
+
+;; 简写，但是只能使用字面量
+(setq my-list2 '("abc" "b" 1))
+
+;; car 返回列表的第一个元素
+(message "car=%s" (car my-list2))
+
+;; cdr 返回除第一个元素的列表
+(message "cdr=%s" (cdr my-list2))
+
+;; 获取列表中的某个元素，索引从 0 开始
+(message "nth(0)=%s nth(1)=%s" (nth 0 my-list) (nth 1 my-list))
+
+;; 判断一个对象是否是列表
+(message "listp=%s" (listp my-list))
+
+;; 其他类型的测试函数一般都以 p 结尾
+;; stringp、numberp
+
+;; 计算列表长度
+;; M-x eval-expression (length my-list)
+
+;; a => b
+(setq my-cons (cons "abcde" "bbb"))
+(message "car=%s cdr=%s type of cdr=%s" (car my-cons) (cdr my-cons) (stringp (cdr my-cons)))
+
+;; cons 的另一种写法
+(setq my-cons2 '("Joe" . "Chen"))
+;; 测试数据类型
+(message "type=%s" (consp my-cons2))
+#+END_SRC
+*** 数组
+    - array
+*** 哈希表
+    - hashtable
 ** Emacs Lisp 基础: 正则表达式
+#+BEGIN_SRC lisp
+;; replace-regexp-in-string
+;; 通常用于过滤一些不需要的内容
+(setq str "abc1339def")
+(setq a (replace-regexp-in-string "[0-9]+" "" str))
+
+;; string-match match-string
+;; 把数字过滤出来
+(when (string-match "[a-z]*\\([0-9]*\\)[a-z]*" str)
+  ;; 1 表示从左往右匹配
+  (message "num=%s" (match-string 1 str)))
+#+END_SRC
 ** Emacs Lisp 基础: 语句(statement)
 ** Emacs Lisp 基础: 与命令行交互
